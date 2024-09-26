@@ -1,0 +1,260 @@
+<!-- CREATED BY HAYDEN KONG -->
+<!-- haydenkong.dev -->
+<!-- DATA FROM HACK CLUB WITH HELP FROM ARNAV -->
+<!-- FOR THE HACK CLUB COMMUNITY -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcade Wrapped | Arcade tools</title>
+
+    <!-- SEO meta tags -->
+    <meta name="description" content="View the stats for the 2024 Hack Club Arcade event!">
+    <meta name="keywords" content="hack club, hack club arcade, arcade, hack club arcade stats, hack club arcade review stats, arcade review stats">
+
+    <!-- Google fonts - Official Arcade fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Slackey&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="favicon.png" type="image/x-icon">
+
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #fbefd6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #slide-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .slide {
+            display: none;
+            text-align: center;
+        }
+        .active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .font-1 {
+            font-family: 'Slackey', cursive;
+            color: #fb8b3c;
+        }
+        .font-2 {
+            font-family: 'Gaegu', cursive;
+        }
+        .font-3 {
+            font-family: 'Slackey', cursive;
+            color: #00afb3;
+        }
+        .heading {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .description {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+        }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: 0.2s;
+            border: none;
+            font-family: 'Slackey', cursive;
+            background-color: #00afb3;
+            color: #fbefd6;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        .btn:active {
+            transform: scale(0.97);
+        }
+        .stat {
+            font-size: 1.8rem;
+            margin: 15px 0;
+        }
+        .fact {
+            font-style: italic;
+            margin-top: 15px;
+            font-size: 1.2rem;
+        }
+        .product-image {
+            max-width: 300px;
+            max-height: 200px;
+            margin: 20px auto;
+        }
+        .price {
+            font-size: 1.4rem;
+            margin-top: 10px;
+            color: #ef3553;
+        }
+        .orders {
+            font-family: 'Slackey', cursive;
+            font-size: 2.2rem;
+            color: #ef3553;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://hackclub.com/">
+        <img style="position: fixed; top: -10px; left: 10px; border: 0; width: 200px; z-index: 999; transition: transform 0.3s ease;" src="https://assets.hackclub.com/flag-orpheus-top.svg" alt="Hack Club" onmouseover="this.style.transform = 'rotate(-5deg) translateY(-10px)';" onmouseout="this.style.transform = 'rotate(0deg) translateY(0px)';"/>
+    </a>
+
+
+    <div id="slide-container">
+        <div class="slide active" id="slide-1">
+            <h1 class="font-1 heading">Welcome to Arcade Wrapped 2024!</h1>
+            <p class="font-2 description">Let's dive into the exciting stats of this year's Hack Club Arcade event!</p>
+            <button class="btn" onclick="nextSlide()">Let's Go!</button>
+        </div>
+
+        <!-- Country slides dynamically inserted -->
+
+        <!-- Product slides dynamically inserted -->
+
+        <div class="slide" id="slide-final">
+            <h2 class="font-1">That's a Wrap!</h2>
+            <p class="font-2">Thanks for being part of Hack Club Arcade 2024!</p>
+            <p class="font-2">We can't wait to see what next year brings!</p>
+            <button class="btn" onclick="restartSlides()">Start Over</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+    let totalSlides;
+
+    function nextSlide() {
+        const currentElement = document.getElementById(`slide-${currentSlide}`);
+        if (currentElement) {
+            currentElement.classList.remove('active');
+        }
+        currentSlide++;
+        if (currentSlide > totalSlides) {
+            currentSlide = 1;
+        }
+        const nextElement = document.getElementById(`slide-${currentSlide}`);
+        if (nextElement) {
+            nextElement.classList.add('active');
+        }
+    }
+
+    function restartSlides() {
+        const currentElement = document.getElementById(`slide-${currentSlide}`);
+        if (currentElement) {
+            currentElement.classList.remove('active');
+        }
+        currentSlide = 1;
+        const firstElement = document.getElementById(`slide-1`);
+        if (firstElement) {
+            firstElement.classList.add('active');
+        }
+    }
+
+    // get interesting facts about countries
+    function getInterestingFact(country) {
+        const facts = {
+            "United States": "Home to Silicon Valley, the global tech hub!",
+            "India": "Boasts the world's largest youth population!",
+            "United Kingdom": "Birthplace of the World Wide Web!",
+            "Canada": "Has the world's longest coastline!",
+            "Australia": "Home to 21 of the world's 25 most venomous snakes!",
+            // other countries
+        };
+        return facts[country] || "A country full of tech enthusiasts!";
+    }
+
+    // get product images and prices
+    function getProductDetails(product) {
+        const details = {
+            "Pile of stickers": { image: "https://cloud-c1gqq7ttf-hack-club-bot.vercel.app/0sticker_pile_2.png", price: "$5" },
+            "OpenAI credits": { image: "https://cloud-nozsvexvx-hack-club-bot.vercel.app/0universal_paperclips_title_screen.png", price: "$10" },
+            "YubiKey": { image: "https://cloud-elfpck7gj-hack-club-bot.vercel.app/0screenshot_2024-06-14_at_07.42.35.png", price: "$80" },
+            "Domain for 1 year": { image: "https://cloud-5ttcbislu-hack-club-bot.vercel.app/2screenshot_2024-06-16_at_19.34.55.png", price: "$12" },
+            "Sticker of your choice": { image: "https://cloud-50x4zfjwx-hack-club-bot.vercel.app/0enjoy_1.png", price: "$3" },
+            // product details
+        }
+        return details[product] || { image: "https://cloud-c1gqq7ttf-hack-club-bot.vercel.app/0sticker_pile_2.png", price: "uhhhh idk the price" };
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                const countriesWithMostOrders = Object.entries(data.orders_per_country)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 5)
+                    .map(([country, orders]) => ({ country, orders }));
+
+                const mostOrderedItems = Object.entries(data.total_quantity_per_item)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 5)
+                    .map(([item, orders]) => ({ item, orders }));
+
+                // Create country slides
+                countriesWithMostOrders.forEach((country, index) => {
+                    const slide = document.createElement('div');
+                    slide.className = 'slide';
+                    slide.id = `slide-${index + 2}`;
+                    slide.innerHTML = `
+                        <h2 class="font-1">Top Country #${index + 1}</h2>
+                        <p class="font-3 stat">${country.country}</p>
+                        <p class="font-2">with</p>
+                        <p class="orders">${country.orders} orders</p>
+                        <p class="font-2 fact">Fun fact: ${getInterestingFact(country.country)}</p>
+                        <button class="btn" onclick="nextSlide()">Next</button>
+                    `;
+                    document.getElementById('slide-container').insertBefore(slide, document.getElementById('slide-final'));
+                });
+
+                // Create product slides
+                mostOrderedItems.forEach((item, index) => {
+                    const productDetails = getProductDetails(item.item);
+                    const slide = document.createElement('div');
+                    slide.className = 'slide';
+                    slide.id = `slide-${index + 7}`; // 5 country slides + 1 intro slide + 1
+                    slide.innerHTML = `
+                        <h2 class="font-1">Top Prize #${index + 1}</h2>
+                        <p class="font-3 stat">${item.item}</p>
+                        <p class="orders">Ordered ${item.orders} times!</p>
+                        <img src="${productDetails.image}" alt="${item.item}" class="product-image">
+                        <p class="font-2 price">Approx. Price: ${productDetails.price}</p>
+                        <button class="btn" onclick="nextSlide()">Next</button>
+                    `;
+                    document.getElementById('slide-container').insertBefore(slide, document.getElementById('slide-final'));
+                });
+
+                totalSlides = document.getElementsByClassName('slide').length;
+                document.getElementById('slide-final').id = `slide-${totalSlides}`;
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    });
+    </script>
+</body>
+</html>
