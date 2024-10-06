@@ -134,9 +134,7 @@
             <button class="btn" onclick="nextSlide()">Let's Go!</button>
         </div>
 
-        <!-- Country slides dynamically inserted -->
-
-        <!-- Product slides dynamically inserted -->
+        <!-- country slides and product slides -->
 
         <div class="slide" id="slide-final">
             <h2 class="font-1">That's a Wrap!</h2>
@@ -177,7 +175,7 @@
         }
     }
 
-    // get interesting facts about countries
+    // facts about countries
     function getInterestingFact(country) {
         const facts = {
             "United States": "Home to Silicon Valley, the global tech hub!",
@@ -185,12 +183,11 @@
             "United Kingdom": "Birthplace of the World Wide Web!",
             "Canada": "Has the world's longest coastline!",
             "Australia": "Home to 21 of the world's 25 most venomous snakes!",
-            // other countries
         };
         return facts[country] || "A country full of tech enthusiasts!";
     }
 
-    // get product images and prices
+    // product images and prices
     function getProductDetails(product) {
         const details = {
             "Pile of stickers": { image: "https://cloud-c1gqq7ttf-hack-club-bot.vercel.app/0sticker_pile_2.png", price: "$5" },
@@ -198,7 +195,6 @@
             "YubiKey": { image: "https://cloud-elfpck7gj-hack-club-bot.vercel.app/0screenshot_2024-06-14_at_07.42.35.png", price: "$80" },
             "Domain for 1 year": { image: "https://cloud-5ttcbislu-hack-club-bot.vercel.app/2screenshot_2024-06-16_at_19.34.55.png", price: "$12" },
             "Sticker of your choice": { image: "https://cloud-50x4zfjwx-hack-club-bot.vercel.app/0enjoy_1.png", price: "$3" },
-            // product details
         }
         return details[product] || { image: "https://cloud-c1gqq7ttf-hack-club-bot.vercel.app/0sticker_pile_2.png", price: "uhhhh idk the price" };
     }
@@ -217,7 +213,7 @@
                     .slice(0, 5)
                     .map(([item, orders]) => ({ item, orders }));
 
-                // Create country slides
+                // country slides
                 countriesWithMostOrders.forEach((country, index) => {
                     const slide = document.createElement('div');
                     slide.className = 'slide';
@@ -238,7 +234,7 @@
                     const productDetails = getProductDetails(item.item);
                     const slide = document.createElement('div');
                     slide.className = 'slide';
-                    slide.id = `slide-${index + 7}`; // 5 country slides + 1 intro slide + 1
+                    slide.id = `slide-${index + 7}`; // 5 country + 1 intro + 1
                     slide.innerHTML = `
                         <h2 class="font-1">Top Prize #${index + 1}</h2>
                         <p class="font-3 stat">${item.item}</p>
